@@ -1,5 +1,5 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
+import { Component } from '@angular/core';
+import { FormlyFieldConfig } from '@ngx-formly/core';
 import { FormGroup } from '@angular/forms';
 
 
@@ -9,11 +9,10 @@ import { FormGroup } from '@angular/forms';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit{
+export class AppComponent {
 
   form = new FormGroup({});
   model = {};
-  setFields :boolean = false;
 
   fields = [
     {
@@ -73,19 +72,14 @@ export class AppComponent implements OnInit{
 
   JSONFields: FormlyFieldConfig [] = JSON.parse(JSON.stringify(this.fields));
 
-  constructor(private cdRef: ChangeDetectorRef){}
+  constructor(){}
 
-  ngOnInit(): void {
-    this.setFields = true;
-    this.cdRef.detectChanges(); 
-  }
+
   onChangeJson(e){
    try {
     this.fields =JSON.parse(e.target.value);
     this.JSONFields= JSON.parse(JSON.stringify(this.fields));
-   } catch (error) {
-     
-   }
+   } catch (error) {}
   }
 
   onSubmit(){

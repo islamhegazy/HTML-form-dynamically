@@ -22,7 +22,7 @@
         <div class="col-md-6">
             <h4>JSON Objects</h4>
             <br>
-            <div class="form-group" *ngIf="setFields">
+            <div class="form-group">
                 <textarea class="form-control" rows="20" (keyup)="onChangeJson($event)" [value]="fields | json"></textarea>
             </div>
         </div>
